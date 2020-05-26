@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "373586693438",
+    "firebase_url": "https://disability-app-d2325.firebaseio.com",
+    "project_id": "disability-app-d2325",
+    "storage_bucket": "disability-app-d2325.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373586693438:android:e58e732d6c27f5551db06f",
+        "android_client_info": {
+          "package_name": "com.disablity.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373586693438-es8sb8is6sf3e060olrqn9h9bevljrb3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.disablity.app",
+            "certificate_hash": "6a6bd1b7cb0df22b94f429f4291ae1b26dcf5368"
+          }
+        },
+        {
+          "client_id": "373586693438-th393m5sk89f5e6184cue0besqjlj7el.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0WLg03MTbD4Ox9nzXx4fWUYl0woMnwCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373586693438-th393m5sk89f5e6184cue0besqjlj7el.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
