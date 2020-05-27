@@ -7,14 +7,33 @@ public class User
     private String name;
     private String address;
     private int age;
+    private String id;
     private String type;
 
-    public User(String name, String address, int age, String type)
+    /**
+     * @param name
+     * @param address
+     * @param age
+     * @param id
+     * @param type
+     */
+    public User(String name, String address, int age, String id, String type)
     {
         this.name = name;
         this.address = address;
         this.age = age;
+        this.id = id;
         this.type = type;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
     }
 
     public String getType()

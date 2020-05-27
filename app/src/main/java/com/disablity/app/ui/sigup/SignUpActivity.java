@@ -24,8 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.disablity.app.AppUtil;
-import com.disablity.app.MainActivity;
 import com.disablity.app.R;
+import com.disablity.app.ui.RegisterActivity;
 
 public class SignUpActivity extends AppCompatActivity
 {
@@ -151,8 +151,8 @@ public class SignUpActivity extends AppCompatActivity
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-        intent.putExtra(AppUtil.USERNAME, model.getDisplayName());
+        Intent intent = new Intent(this, RegisterActivity.class);
+        intent.putExtra(AppUtil.USER_ID, model.getDisplayName());
         startActivity(intent);
     }
 
