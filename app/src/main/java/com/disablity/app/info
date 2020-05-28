@@ -1,0 +1,18 @@
+
+
+
+
+
+
+UPLOAD                       VIEW APPLICANTS
+    JobProfile ->
+         1. Company Name
+         2. Job Profile
+         3. salary
+         4. Location
+
+
+
+Register -> Type of disability
+Recruiter -> Recruiter Home->   1.Create Job   2.View Applicants
+Applicant -> Applicant Home 1. Search 2. Application Status-> Job Search Page  (Apply job)-> Application Successful
