@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.RecuiterApplicants"></activity>
         <activity android:name=".ui.RecruiterUploadJob" />
-        <activity android:name=".ui.RecruterHome" />
+        <activity android:name=".ui.RecruiterHome" />
         <activity android:name=".ui.ApplicantJobSearchActivity" />
         <activity
             android:name=".ui.RegisterActivity"

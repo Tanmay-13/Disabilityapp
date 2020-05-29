@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/job_profile_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -45,10 +45,10 @@
         android:layout_marginTop="16dp"
         android:text="Salary"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/job_profile_field" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/job_salary_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -64,10 +64,10 @@
         android:layout_marginTop="16dp"
         android:text="Location"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/job_salary_field" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/job_location_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -91,7 +91,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/upload_job_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Upload Job"
