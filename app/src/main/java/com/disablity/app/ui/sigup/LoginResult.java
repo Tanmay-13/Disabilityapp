@@ -11,8 +11,23 @@ public class LoginResult {
     @Nullable
     private Integer error;
 
-   public LoginResult(@Nullable Integer error) {
+    @Nullable
+    private String message;
+
+    @Nullable
+    public String getMessage()
+    {
+        return message;
+    }
+
+    public void setMessage(@Nullable String message)
+    {
+        this.message = message;
+    }
+
+    public LoginResult(@Nullable Integer error) {
         this.error = error;
+        message="";
     }
 
     public LoginResult(@Nullable LoggedInUserView success) {

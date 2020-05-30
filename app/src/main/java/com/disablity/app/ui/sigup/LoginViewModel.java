@@ -69,21 +69,13 @@ public class LoginViewModel extends ViewModel
 //                                           Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
                             // ...
-                            loginResult.setValue(new LoginResult(R.string.login_failed));
+                            LoginResult loginResult = new LoginResult(R.string.login_failed);
+                            loginResult.setMessage(task.getException().getMessage());
+                            LoginViewModel.this.loginResult.setValue(loginResult);
                         }
 
-                        // ...
                     }
                 });
-
-//        Result<LoggedInUser> result = loginRepository.login(username, password);
-//
-//        if (result instanceof Result.Success) {
-//            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-//            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
-//        } else {
-//            loginResult.setValue(new LoginResult(R.string.login_failed));
-//        }
     }
 
     public void loginDataChanged(String username, String password)
@@ -146,6 +138,7 @@ public class LoginViewModel extends ViewModel
     public void checkIfLogin()
     {
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        mAuth.signOut();
         if (currentUser!=null){
             loginResult.setValue(new LoginResult(new LoggedInUserView(currentUser.getEmail())));
         }

@@ -67,4 +67,14 @@ public class JobProfile
     {
         this.recuruiter_id = recuruiter_id;
     }
+
+    @Override
+    public String toString()
+    {
+        return new StringBuilder(JobProfile.class.getSimpleName())
+                .append("position='" + position + "'")
+                .append("salary='" + salary + "'")
+                .append("location='" + location + "'")
+                .toString();
+    }
 }

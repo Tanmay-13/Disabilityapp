@@ -73,16 +73,16 @@ public class SignUpActivity extends AppCompatActivity
                     return;
                 }
                 loadingProgressBar.setVisibility(View.GONE);
+                setResult(Activity.RESULT_OK);
                 if (loginResult.getError() != null) {
                     showLoginFailed(loginResult.getError());
-                }
-                if (loginResult.getSuccess() != null) {
+                }else    if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+                    finish();
                 }
-                setResult(Activity.RESULT_OK);
 
-                //Complete and destroy login activity once successful
-                finish();
+
+
             }
         });
 
