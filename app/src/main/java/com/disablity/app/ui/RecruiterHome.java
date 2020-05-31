@@ -66,6 +66,7 @@ public class RecruiterHome extends AppCompatActivity
                 mAuth.signOut();
                 Intent intent=new Intent(RecruiterHome.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
