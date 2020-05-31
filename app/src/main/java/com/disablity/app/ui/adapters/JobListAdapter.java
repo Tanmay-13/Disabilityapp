@@ -18,8 +18,9 @@ import com.google.android.material.snackbar.Snackbar;
 public class JobListAdapter extends ListAdapter<JobProfile, JobViewHolder>
 {
     private boolean isRecuiter;
+    private JobProfileProvider profileProvider;
 
-    public JobListAdapter(boolean isRecuiter)
+    public JobListAdapter(boolean isRecuiter,JobProfileProvider profileProvider)
     {
         super(new DiffUtil.ItemCallback<JobProfile>()
         {
@@ -36,6 +37,7 @@ public class JobListAdapter extends ListAdapter<JobProfile, JobViewHolder>
             }
         });
         this.isRecuiter = isRecuiter;
+        this.profileProvider=profileProvider;
     }
 
 
@@ -44,6 +46,7 @@ public class JobListAdapter extends ListAdapter<JobProfile, JobViewHolder>
     public JobViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_job, parent, false);
+
         return new JobViewHolder(view);
     }
 
@@ -51,38 +54,7 @@ public class JobListAdapter extends ListAdapter<JobProfile, JobViewHolder>
     public void onBindViewHolder(@NonNull JobViewHolder holder, int position)
     {
         JobProfile item = getItem(position);
-        holder.bindData(item, isRecuiter);
-    }
-}
-
-class JobViewHolder extends RecyclerView.ViewHolder
-{
-    public JobViewHolder(@NonNull View itemView)
-    {
-        super(itemView);
-    }
-
-    public void bindData(JobProfile jobProfile, boolean isRecuiter)
-    {
-        TextView location = itemView.findViewById(R.id.job_location);
-        TextView profile = itemView.findViewById(R.id.job_profile);
-        TextView salary = itemView.findViewById(R.id.job_salary);
-        Button applyButton = itemView.findViewById(R.id.job_apply);
-        location.setText(jobProfile.getLocation());
-        profile.setText(jobProfile.getPosition());
-        salary.setText(jobProfile.getSalary());
-        if (isRecuiter){
-            applyButton.setVisibility(View.INVISIBLE);
-        }
-        applyButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Snackbar.make(itemView, "Applied for the Job", Snackbar.LENGTH_LONG).show();
-                v.setVisibility(View.INVISIBLE);
-            }
-        });
+        holder.bindData(item, isRecuiter,profileProvider);
     }
 }
 

@@ -3,6 +3,7 @@ package com.disablity.app.ui.login.ui.login;
 import android.app.Activity;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -24,14 +25,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.disablity.app.AppUtil;
-import com.disablity.app.MainActivity;
 import com.disablity.app.R;
 import com.disablity.app.ui.RegisterActivity;
 import com.disablity.app.ui.sigup.LoggedInUserView;
 import com.disablity.app.ui.sigup.LoginFormState;
 import com.disablity.app.ui.sigup.LoginResult;
 import com.disablity.app.ui.sigup.LoginViewModel;
-import com.disablity.app.ui.sigup.LoginViewModelFactory;
 import com.disablity.app.ui.sigup.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity
@@ -44,7 +43,7 @@ public class LoginActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
+        loginViewModel =new  ViewModelProvider(this)
                 .get(LoginViewModel.class);
 
         final EditText usernameEditText = findViewById(R.id.username);

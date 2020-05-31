@@ -2,9 +2,7 @@ package com.disablity.app.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,12 +11,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.disablity.app.AppUtil;
-import com.disablity.app.MainActivity;
 import com.disablity.app.R;
 import com.disablity.app.data.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.disablity.app.AppUtil.gson;
@@ -89,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity
         if (current.getType().equals("Recruiter")){
             intent = new Intent(RegisterActivity.this, RecruiterHome.class);
         }else {
-            intent = new Intent(RegisterActivity.this, ApplicantJobSearchActivity.class);
+            intent = new Intent(RegisterActivity.this, ApplicantHome.class);
         }
         intent.putExtra(AppUtil.USER_OBJ, gson.toJson(current));
         startActivity(intent);

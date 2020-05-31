@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.ApplicantPastApplications" />
+        <activity android:name=".ui.ApplicantHome" />
         <activity android:name=".ui.RecuiterApplicants" />
         <activity android:name=".ui.RecruiterUploadJob" />
         <activity android:name=".ui.RecruiterHome" />
         <activity android:name=".ui.ApplicantJobSearchActivity" />
-        <activity
-            android:name=".ui.RegisterActivity"
-            />
+        <activity android:name=".ui.RegisterActivity" />
         <activity
             android:name=".ui.sigup.SignUpActivity"
             android:label="@string/title_activity_login" />
@@ -28,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

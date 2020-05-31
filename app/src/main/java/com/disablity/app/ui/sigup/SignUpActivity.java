@@ -3,6 +3,7 @@ package com.disablity.app.ui.sigup;
 import android.app.Activity;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -37,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
+        loginViewModel = new ViewModelProvider(this)
                 .get(LoginViewModel.class);
 
         final EditText usernameEditText = findViewById(R.id.username);

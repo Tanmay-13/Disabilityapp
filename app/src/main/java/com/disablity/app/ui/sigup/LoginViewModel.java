@@ -1,16 +1,15 @@
 package com.disablity.app.ui.sigup;
 
+import android.app.Activity;
+import android.app.Application;
+import android.util.Patterns;
+
 import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.app.Activity;
-import android.util.Patterns;
-
-import com.disablity.app.data.LoginRepository;
-import com.disablity.app.data.Result;
-import com.disablity.app.data.model.LoggedInUser;
 import com.disablity.app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,24 +17,25 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginViewModel extends ViewModel
+public class LoginViewModel extends AndroidViewModel
 {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     public MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
-    private LoginRepository loginRepository;
     private FirebaseAuth mAuth;
 
-    LoginViewModel()
+    public LoginViewModel(@NonNull Application application)
     {
+        super(application);
         mAuth = FirebaseAuth.getInstance();
     }
+//
+//    LoginViewModel()
+//    {
+//        mAuth = FirebaseAuth.getInstance();
+//    }
 
-    LoginViewModel(LoginRepository loginRepository)
-    {
-        this();
-        this.loginRepository = loginRepository;
-    }
+
 
     public LiveData<LoginFormState> getLoginFormState()
     {

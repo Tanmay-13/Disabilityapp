@@ -1,6 +1,8 @@
 package com.disablity.app.data;
 
 
+import java.util.ArrayList;
+
 public class JobProfile
 {
     private String id;
