@@ -23,12 +23,12 @@ import static com.disablity.app.util.AppUtil.gson;
 public class RegisterActivity extends AppCompatActivity
 {
 
-   private EditText nameField;
-   private EditText ageField;
-   private EditText addressField;
-   private Button registerButton;
-   private Spinner userType;
-   private String id;
+    private EditText nameField;
+    private EditText ageField;
+    private EditText addressField;
+    private Button registerButton;
+    private Spinner userType;
+    private String id;
     private Spinner diablitySipnner;
     private TextView diablityLabel;
 
@@ -50,19 +50,26 @@ public class RegisterActivity extends AppCompatActivity
 
 
         String[] types = {"Applicant", "Recruiter"};
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, types);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, types);
         userType.setAdapter(adapter);
         userType.setSelection(0);
+
+        String[] disablityTypes = {"Blindness", "Intellectual Disability", "Hearing Impairment"};
+        final ArrayAdapter<String> disablityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, disablityTypes);
+        diablitySipnner.setAdapter(disablityAdapter);
+        diablitySipnner.setSelection(0);
+
+
         userType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 String item = adapter.getItem(position);
-                if (item.equals(types[0])){
+                if (item.equals(types[0])) {
                     diablitySipnner.setVisibility(View.VISIBLE);
                     diablityLabel.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     diablitySipnner.setVisibility(View.GONE);
                     diablityLabel.setVisibility(View.GONE);
                 }
@@ -80,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity
             String address = addressField.getText().toString();
             int age = Integer.parseInt(ageField.getText().toString());
             String type = userType.getSelectedItem().toString();
-            User user=new User(name,address,age,id,type);
+            User user = new User(name, address, age, id, type);
             AppUtil.addToList(RegisterActivity.this, user);
             registerComplete(user);
         });
@@ -103,9 +110,9 @@ public class RegisterActivity extends AppCompatActivity
     {
         Intent intent;
 
-        if (current.getType().equals("Recruiter")){
+        if (current.getType().equals("Recruiter")) {
             intent = new Intent(RegisterActivity.this, RecruiterHome.class);
-        }else {
+        } else {
             intent = new Intent(RegisterActivity.this, ApplicantHome.class);
         }
         intent.putExtra(AppUtil.USER_OBJ, gson.toJson(current));

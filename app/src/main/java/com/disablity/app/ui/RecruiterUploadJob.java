@@ -17,7 +17,6 @@ import static com.disablity.app.util.AppUtil.saveJob;
 public class RecruiterUploadJob extends AppCompatActivity
 {
 
-
     private TextView jobProfile;
     private TextView jobLocation;
     private TextView jobSalary;
