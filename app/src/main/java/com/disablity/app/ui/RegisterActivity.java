@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity
         userType.setAdapter(adapter);
         userType.setSelection(0);
 
-        String[] disablityTypes = {"Blindness", "Intellectual Disability", "Hearing Impairment"};
+        String[] disablityTypes = {"Blindness", "Intellectual Disability", "Hearing Impairment","Acid Attack Victim"};
         final ArrayAdapter<String> disablityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, disablityTypes);
         diablitySipnner.setAdapter(disablityAdapter);
         diablitySipnner.setSelection(0);
