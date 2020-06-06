@@ -1,13 +1,11 @@
-package com.disablity.app;
+package com.disablity.app.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.disablity.app.data.JobApplication;
 import com.disablity.app.data.JobProfile;
 import com.disablity.app.data.User;
-import com.disablity.app.ui.RegisterActivity;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -16,8 +14,6 @@ import java.util.List;
 
 public class AppUtil
 {
-
-
 
     public static ArrayList<JobProfile> getJobs(Context activity, String recuiter)
     {

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
-import com.disablity.app.AppUtil;
+import com.disablity.app.util.AppUtil;
 import com.disablity.app.R;
 import com.disablity.app.data.JobApplication;
 import com.disablity.app.data.JobProfile;

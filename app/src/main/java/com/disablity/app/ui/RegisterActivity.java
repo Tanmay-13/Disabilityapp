@@ -5,18 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
-import com.disablity.app.AppUtil;
+import com.disablity.app.util.AppUtil;
 import com.disablity.app.R;
 import com.disablity.app.data.User;
 
 import java.util.List;
 
-import static com.disablity.app.AppUtil.gson;
+import static com.disablity.app.util.AppUtil.gson;
 
 public class RegisterActivity extends AppCompatActivity
 {
@@ -27,7 +29,8 @@ public class RegisterActivity extends AppCompatActivity
    private Button registerButton;
    private Spinner userType;
    private String id;
-
+    private Spinner diablitySipnner;
+    private TextView diablityLabel;
 
 
     @Override
@@ -42,25 +45,44 @@ public class RegisterActivity extends AppCompatActivity
         addressField = findViewById(R.id.address_field);
         userType = findViewById(R.id.user_type);
         registerButton = findViewById(R.id.register_user);
+        diablitySipnner = findViewById(R.id.disablity_spiner);
+        diablityLabel = findViewById(R.id.disablity_label);
+
 
         String[] types = {"Applicant", "Recruiter"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, types);
         userType.setAdapter(adapter);
         userType.setSelection(0);
-
-        registerButton.setOnClickListener(new View.OnClickListener()
+        userType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
-            public void onClick(View v)
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                String name = nameField.getText().toString();
-                String address = addressField.getText().toString();
-                int age = Integer.parseInt(ageField.getText().toString());
-                String type = userType.getSelectedItem().toString();
-                User user=new User(name,address,age,id,type);
-                AppUtil.addToList(RegisterActivity.this, user);
-                registerComplete(user);
+                String item = adapter.getItem(position);
+                if (item.equals(types[0])){
+                    diablitySipnner.setVisibility(View.VISIBLE);
+                    diablityLabel.setVisibility(View.VISIBLE);
+                }else {
+                    diablitySipnner.setVisibility(View.GONE);
+                    diablityLabel.setVisibility(View.GONE);
+                }
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
+        registerButton.setOnClickListener(v -> {
+            String name = nameField.getText().toString();
+            String address = addressField.getText().toString();
+            int age = Integer.parseInt(ageField.getText().toString());
+            String type = userType.getSelectedItem().toString();
+            User user=new User(name,address,age,id,type);
+            AppUtil.addToList(RegisterActivity.this, user);
+            registerComplete(user);
         });
     }
 

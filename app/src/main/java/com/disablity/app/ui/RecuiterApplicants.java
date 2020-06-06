@@ -4,29 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-import com.disablity.app.AppUtil;
+import com.disablity.app.util.AppUtil;
 import com.disablity.app.R;
 import com.disablity.app.data.JobApplication;
 import com.disablity.app.data.JobProfile;
 import com.disablity.app.data.User;
 import com.disablity.app.ui.adapters.JobApplicationAdapter;
 import com.disablity.app.ui.adapters.JobApplicationProvider;
-import com.disablity.app.ui.adapters.JobListAdapter;
-import com.disablity.app.ui.adapters.JobProfileProvider;
-import com.disablity.app.ui.adapters.JobViewHolder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import static com.disablity.app.AppUtil.getApplications;
-import static com.disablity.app.AppUtil.getJobs;
-import static com.disablity.app.AppUtil.gson;
+import static com.disablity.app.util.AppUtil.getApplications;
+import static com.disablity.app.util.AppUtil.getJobs;
 
 public class RecuiterApplicants extends AppCompatActivity implements JobApplicationProvider
 {
@@ -82,25 +74,15 @@ public class RecuiterApplicants extends AppCompatActivity implements JobApplicat
         viewHolder.applicationName.setText(applicant.getName());
         viewHolder.applicationPosition.setText(jobProfile.getPosition());
         reviewStatus(viewHolder, item);
-        viewHolder.acceptButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                item.setStatus(JobApplication.ACCEPTED);
-                AppUtil.addApplication(RecuiterApplicants.this, item);
-                reviewStatus(viewHolder, item);
-            }
+        viewHolder.acceptButton.setOnClickListener(v -> {
+            item.setStatus(JobApplication.ACCEPTED);
+            AppUtil.addApplication(RecuiterApplicants.this, item);
+            reviewStatus(viewHolder, item);
         });
-        viewHolder.rejectButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                item.setStatus(JobApplication.REJECTED);
-                reviewStatus(viewHolder, item);
-                AppUtil.addApplication(RecuiterApplicants.this, item);
-            }
+        viewHolder.rejectButton.setOnClickListener(v -> {
+            item.setStatus(JobApplication.REJECTED);
+            reviewStatus(viewHolder, item);
+            AppUtil.addApplication(RecuiterApplicants.this, item);
         });
     }
 

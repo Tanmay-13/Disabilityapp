@@ -8,11 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.disablity.app.AppUtil;
+import com.disablity.app.util.AppUtil;
 import com.disablity.app.R;
 import com.disablity.app.data.JobProfile;
 
-import static com.disablity.app.AppUtil.saveJob;
+import static com.disablity.app.util.AppUtil.saveJob;
 
 public class RecruiterUploadJob extends AppCompatActivity
 {
@@ -35,14 +35,9 @@ public class RecruiterUploadJob extends AppCompatActivity
         jobProfile = findViewById(R.id.job_profile_field);
         jobLocation = findViewById(R.id.job_location_field);
         jobSalary = findViewById(R.id.job_salary_field);
-        uploadJob.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                insertJob();
-                finish();
-            }
+        uploadJob.setOnClickListener(v -> {
+            insertJob();
+            finish();
         });
     }
 

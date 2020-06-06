@@ -51,30 +51,25 @@ public class LoginViewModel extends AndroidViewModel
     {
         // can be launched in a separate asynchronous job
         mAuth.signInWithEmailAndPassword(username, password)
-                .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                .addOnCompleteListener(activity, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
 //                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            loginResult.setValue(new LoginResult(new LoggedInUserView(user.getEmail())));
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        loginResult.setValue(new LoginResult(new LoggedInUserView(user.getEmail())));
 //                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
+                    } else {
+                        // If sign in fails, display a message to the user.
 //                            Log.w(TAG, "signInWithEmail:failure", task.getException());
 //                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
 //                                           Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
-                            // ...
-                            LoginResult loginResult = new LoginResult(R.string.login_failed);
-                            loginResult.setMessage(task.getException().getMessage());
-                            LoginViewModel.this.loginResult.setValue(loginResult);
-                        }
-
+                        // ...
+                        LoginResult loginResult = new LoginResult(R.string.login_failed);
+                        loginResult.setMessage(task.getException().getMessage());
+                        LoginViewModel.this.loginResult.setValue(loginResult);
                     }
+
                 });
     }
 
@@ -112,26 +107,21 @@ public class LoginViewModel extends AndroidViewModel
     {
 
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                .addOnCompleteListener(activity, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
 //                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            loginResult.setValue(new LoginResult(new LoggedInUserView(user.getEmail())));
-                        } else {
-                            // If sign in fails, display a message to the user.
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        loginResult.setValue(new LoginResult(new LoggedInUserView(user.getEmail())));
+                    } else {
+                        // If sign in fails, display a message to the user.
 //                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            //        Toast.LENGTH_SHORT).show();
+                        //        Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
-                            loginResult.setValue(new LoginResult(R.string.login_failed));
-                        }
-
-                        // ...
+                        loginResult.setValue(new LoginResult(R.string.login_failed));
                     }
+
+                    // ...
                 });
     }
 

@@ -9,7 +9,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.disablity.app.AppUtil;
+import com.disablity.app.util.AppUtil;
 import com.disablity.app.R;
 import com.disablity.app.data.JobApplication;
 import com.disablity.app.data.JobProfile;
@@ -90,20 +90,15 @@ public class ApplicantJobSearchActivity extends AppCompatActivity implements Job
     public void bindData(JobViewHolder holder, final JobProfile profile)
     {
         Button applyButton=holder.applyButton;
-        applyButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Snackbar.make(list, "Applied for the Job", Snackbar.LENGTH_LONG).show();
-                v.setVisibility(View.INVISIBLE);
+        applyButton.setOnClickListener(v -> {
+            Snackbar.make(list, "Applied for the Job", Snackbar.LENGTH_LONG).show();
+            v.setVisibility(View.INVISIBLE);
 
-                JobApplication application=new JobApplication(profile.getRecuruiter_id(),id,profile.getId(),JobApplication.WAITING);
-                AppUtil.addApplication(ApplicantJobSearchActivity.this, application);
+            JobApplication application=new JobApplication(profile.getRecuruiter_id(),id,profile.getId(),JobApplication.WAITING);
+            AppUtil.addApplication(ApplicantJobSearchActivity.this, application);
 
-                jobProfiles.remove(profile);
-                jobListAdapter.submitList(jobProfiles);
-            }
+            jobProfiles.remove(profile);
+            jobListAdapter.submitList(jobProfiles);
         });
 
     }

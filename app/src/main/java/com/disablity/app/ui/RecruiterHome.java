@@ -8,12 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.disablity.app.AppUtil;
+import com.disablity.app.util.AppUtil;
 import com.disablity.app.R;
 import com.disablity.app.data.User;
 import com.disablity.app.ui.login.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.gson.Gson;
 
 public class RecruiterHome extends AppCompatActivity
 {
@@ -32,42 +31,27 @@ public class RecruiterHome extends AppCompatActivity
 
         setContentView(R.layout.activity_recruter_home);
         Button uploadJob=findViewById(R.id.upload_job);
-        uploadJob.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent in=new Intent(RecruiterHome.this,RecruiterUploadJob.class);
-                in.putExtra(AppUtil.USER_ID,id);
-                startActivity(in);
+        uploadJob.setOnClickListener(v -> {
+            Intent in=new Intent(RecruiterHome.this,RecruiterUploadJob.class);
+            in.putExtra(AppUtil.USER_ID,id);
+            startActivity(in);
 
-            }
         });
         Button applicants=findViewById(R.id.job_applicants);
-        applicants.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent in=new Intent(RecruiterHome.this,RecuiterApplicants.class);
-                in.putExtra(AppUtil.USER_ID,id);
-                startActivity(in);
+        applicants.setOnClickListener(v -> {
+            Intent in=new Intent(RecruiterHome.this,RecuiterApplicants.class);
+            in.putExtra(AppUtil.USER_ID,id);
+            startActivity(in);
 
-            }
         });
         TextView recuiterID=findViewById(R.id.recruiter_id);
         recuiterID.setText(user.getName());
         Button logOut=findViewById(R.id.logout_recuiter);
-        logOut.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                mAuth.signOut();
-                Intent intent=new Intent(RecruiterHome.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        logOut.setOnClickListener(v -> {
+            mAuth.signOut();
+            Intent intent=new Intent(RecruiterHome.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
